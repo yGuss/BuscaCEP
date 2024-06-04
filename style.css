@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+
+}
+
+body {
+    overflow: hidden;
+    min-height: 90vh;
 }
 
 .container {
@@ -29,7 +35,7 @@
 }
 
 .hero {
-    min-height: 80vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,6 +87,16 @@ input:disabled {
 input::placeholder {
     color: #818080;
 }
+
+footer {
+    margin: 0 12px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
 
 @media (max-width:992px) {
     .row {
