@@ -46,6 +46,10 @@
 
 }
 
+.row {
+    margin: 1rem 0;
+}
+
 input {
     padding: 10px 20px;
     width: 100%;
@@ -76,4 +80,29 @@ input:disabled {
 
 input::placeholder {
     color: #818080;
+}
+
+@media (max-width:992px) {
+    .row {
+        margin: 1rem 0;
+        padding: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+
+}
+
+@media (max-width:576px) {
+    .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        gap: 24px;
+    }
+
 }
