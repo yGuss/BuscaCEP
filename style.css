@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 8px;
+}
+
+.bg {
+    position: relative;
+}
+
+.bg::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    min-height: 100vh;
+}
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px;
+}
+
+.hero h1 {
+    text-align: center;
+    line-height: 150%;
+    font-size: 46px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 5px;
+
+}
+
+input {
+    padding: 10px 20px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    outline: 1px solid #fff;
+}
+
+input:focus {
+    outline: 1px solid #468bc2;
+}
+
+input:disabled {
+    cursor: not-allowed;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+input::placeholder {
+    color: #818080;
+}

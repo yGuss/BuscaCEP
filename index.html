@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca CEP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../BuscaCEP/style.css">
+    <script src="https://unpkg.com/node-fetch@2.6.7/dist/fetch.umd.js"></script>
+    <script>
+        function limpaFormulario() {
+            document.getElementById('cep').value = '';
+            document.getElementById('endereco').value = '';
+            document.getElementById('bairro').value = '';
+            document.getElementById('cidade').value = '';
+            document.getElementById('uf').value = '';
+        }
+        const tratarCep = (event) => {
+            let input = event.target
+            input.value = cepMask(input.value)
+        }
+
+        const cepMask = (value) => {
+            if (!value) return ""
+            value = value.replace(/\D/g, '')
+            value = value.replace(/(\d{5})(\d)/, '$1-$2')
+            return value
+        }
+        function getDadosEnderecoPorCEP(cep) {
+            if (cep != '')
+
+                fetch('https://viacep.com.br/ws/' + cep + '/json/')
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json()
+                        }
+                        else {
+                            alert('Falha na requisição, erro HTTP: ' + response.status)
+                            throw new Error('Falha na requisição: ' + response.status);
+                        }
+                    })
+                    .then(data => {
+                        const dadosJSON = data;
+                        document.getElementById('endereco').value = dadosJSON.logradouro;
+                        document.getElementById('bairro').value = dadosJSON.bairro;
+                        document.getElementById('cidade').value = dadosJSON.localidade;
+                        document.getElementById('uf').value = dadosJSON.uf;
+                    })
+                    .catch(TypeError => {
+                        alert('Caracteres Inválidos\nDigite um CEP no seguinte formato\nEx: 00001-001')
+                        limpaFormulario()
+                    })
+            else {
+                limpaFormulario()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <section class="bg">
+        <div class="container">
+            <div class="hero">
+                <h1>Pesquisa de Endereço</h1>
+
+                <div class="row mb-4">
+                    <div class="col-sm-3">
+                        <input type="text" placeholder="CEP" size="10" maxlength="9"
+                            onblur="getDadosEnderecoPorCEP(this.value)" onkeyup="tratarCep(event)"
+                            autocomplete="postal-code" id="cep">
+                    </div>
+                    <div class="col-sm-9 ">
+                        <input type="text" placeholder="Endereço" readonly disabled id="endereco">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-6">
+                        <input type="text" placeholder="Bairro" readonly disabled id="bairro">
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="Cidade" read-only disabled id="cidade">
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" placeholder="UF" readonly disabled id="uf">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
