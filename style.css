@@ -130,4 +130,5 @@ label {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
