@@ -70,28 +70,33 @@
 
                 <div class="row">
                     <div class="col-sm-3">
-                        <input type="text" placeholder="CEP" size="10" maxlength="9"
-                            onblur="getDadosEnderecoPorCEP(this.value)" onkeyup="tratarCep(event)"
-                            autocomplete="postal-code" id="cep">
+                        <input type="text" size="10" maxlength="9" onblur="getDadosEnderecoPorCEP(this.value)"
+                            onkeyup="tratarCep(event)" autocomplete="postal-code" id="cep"> <label
+                            class="placeholder">CEP</label>
                     </div>
                     <div class="col-sm-9 ">
-                        <input type="text" placeholder="Endereço" readonly disabled id="endereco">
+                        <input type="text" readonly disabled id="endereco">
+                        <label>Endereço</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-6">
-                        <input type="text" placeholder="Bairro" readonly disabled id="bairro">
+                        <input type="text" readonly disabled id="bairro">
+                        <label>Bairro</label>
                     </div>
 
                     <div class="col-sm-4">
-                        <input type="text" placeholder="Cidade" read-only disabled id="cidade">
+                        <input type="text" readonly disabled id="cidade">
+                        <label>Cidade</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" placeholder="UF" readonly disabled id="uf">
+                        <input type="text" readonly disabled id="uf">
+                        <label>UF</label>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     <footer>CopyRight © 2024 Gustavo Fernandes | Todos os Direitos Reservados
